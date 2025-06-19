@@ -1,0 +1,35 @@
+@model BusinessObjects.Category
+@{
+    ViewData["Title"] = "Xóa danh mục";
+}
+
+<h2>Xóa danh mục</h2>
+
+<div class="alert alert-danger">
+    <h4>Bạn có chắc chắn muốn xóa danh mục này?</h4>
+    @if (Model.Products?.Count > 0)
+    {
+        <p class="text-warning">Cảnh báo: Danh mục này có @Model.Products.Count sản phẩm. Việc xóa có thể ảnh hưởng đến dữ liệu sản phẩm.</p>
+    }
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <dl class="row">
+            <dt class="col-sm-4">ID:</dt>
+            <dd class="col-sm-8">@Model.CategoryId</dd>
+            
+            <dt class="col-sm-4">Tên danh mục:</dt>
+            <dd class="col-sm-8">@Model.CategoryName</dd>
+            
+            <dt class="col-sm-4">Số sản phẩm:</dt>
+            <dd class="col-sm-8">@(Model.Products?.Count ?? 0)</dd>
+        </dl>
+        
+        <form asp-action="Delete" method="post">
+            <input type="hidden" asp-for="CategoryId" />
+            <button type="submit" class="btn btn-danger">Xóa</button>
+            <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+        </form>
+    </div>
+</div> 

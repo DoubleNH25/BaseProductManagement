@@ -1,0 +1,25 @@
+@model BusinessObjects.Category
+@{
+    ViewData["Title"] = "Tạo danh mục";
+}
+
+<h2>Tạo danh mục mới</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group mb-3">
+                <label asp-for="CategoryName" class="form-label">Tên danh mục</label>
+                <input asp-for="CategoryName" class="form-control" required />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Tạo</button>
+                <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+            </div>
+        </form>
+    </div>
+</div> 

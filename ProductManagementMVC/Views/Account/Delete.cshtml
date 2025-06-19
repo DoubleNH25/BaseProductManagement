@@ -1,0 +1,43 @@
+@model BusinessObjects.AccountMember
+@{
+    ViewData["Title"] = "Xóa tài khoản";
+}
+
+<h2>Xóa tài khoản</h2>
+
+<div class="alert alert-danger">
+    <h4>Bạn có chắc chắn muốn xóa tài khoản này?</h4>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <dl class="row">
+            <dt class="col-sm-4">ID:</dt>
+            <dd class="col-sm-8">@Model.MemberId</dd>
+            
+            <dt class="col-sm-4">Họ và tên:</dt>
+            <dd class="col-sm-8">@Model.FullName</dd>
+            
+            <dt class="col-sm-4">Email:</dt>
+            <dd class="col-sm-8">@Model.EmailAddress</dd>
+            
+            <dt class="col-sm-4">Vai trò:</dt>
+            <dd class="col-sm-8">
+                @if (Model.MemberRole == 1)
+                {
+                    <span class="badge bg-primary">Admin</span>
+                }
+                else
+                {
+                    <span class="badge bg-secondary">User</span>
+                }
+            </dd>
+        </dl>
+        
+        <form asp-action="Delete" method="post">
+            <input type="hidden" asp-for="MemberId" />
+            <button type="submit" class="btn btn-danger">Xóa</button>
+            <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+        </form>
+    </div>
+</div> 

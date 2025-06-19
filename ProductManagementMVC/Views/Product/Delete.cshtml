@@ -1,0 +1,37 @@
+@model BusinessObjects.Product
+@{
+    ViewData["Title"] = "Xóa sản phẩm";
+}
+
+<h2>Xóa sản phẩm</h2>
+
+<div class="alert alert-danger">
+    <h4>Bạn có chắc chắn muốn xóa sản phẩm này?</h4>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <dl class="row">
+            <dt class="col-sm-4">ID:</dt>
+            <dd class="col-sm-8">@Model.ProductId</dd>
+            
+            <dt class="col-sm-4">Tên sản phẩm:</dt>
+            <dd class="col-sm-8">@Model.ProductName</dd>
+            
+            <dt class="col-sm-4">Danh mục:</dt>
+            <dd class="col-sm-8">@Model.Category?.CategoryName</dd>
+            
+            <dt class="col-sm-4">Số lượng tồn:</dt>
+            <dd class="col-sm-8">@Model.UnitsInStock</dd>
+            
+            <dt class="col-sm-4">Đơn giá:</dt>
+            <dd class="col-sm-8">@Model.UnitPrice.ToString("N0") VNĐ</dd>
+        </dl>
+        
+        <form asp-action="Delete" method="post">
+            <input type="hidden" asp-for="ProductId" />
+            <button type="submit" class="btn btn-danger">Xóa</button>
+            <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+        </form>
+    </div>
+</div> 
